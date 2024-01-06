@@ -1,3 +1,4 @@
+// gets random computer choice
 function getComputerChoice() {
     switch(Math.floor((Math.random() * 3) + 1)) {
         case 1:
@@ -12,15 +13,30 @@ function getComputerChoice() {
     }
 }
 
-function getUserChoice() {
-   let choice = prompt("Choose your weapon!", '');
-   choice = choice.toLowerCase();
-   if (choice === "rock" || choice === "paper" || choice === "scissors") {
-    return choice
-   } else {
-    alert("Please try again! Type Rock, Paper or Scissors!");
-    return getUserChoice();
-   }
+// gets player choice, while loop until a correct entry is made
+function getPlayerChoice() {
+    let choice;
+    while(true) {
+        choice = prompt("Choose your weapon!", '');
+
+        if (choice === null) {
+            alert("See ya next time!");
+            break; //exit loop if user selects cancel prompt
+        }
+
+        choice = choice.toLowerCase();
+        if (choice === "rock" || choice === "paper" || choice === "scissors") {
+         break; //exit loop if choice is valid   
+        } else {
+         alert("Please try again! Type Rock, Paper or Scissors!");
+        }  
+    }
+    return choice;
 }
 
-console.log(getUserChoice());
+
+
+
+function playRound(computerChoice, playerChoice) {
+if (playerChoice === "rock" && computerChoice === "paper") {return "You Lose! Paper beats Rock"}
+}
