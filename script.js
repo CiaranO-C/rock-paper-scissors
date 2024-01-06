@@ -12,4 +12,15 @@ function getComputerChoice() {
     }
 }
 
-console.log(getComputerChoice());
+function getUserChoice() {
+   let choice = prompt("Choose your weapon!", '');
+   choice = choice.toLowerCase();
+   if (choice === "rock" || choice === "paper" || choice === "scissors") {
+    return choice
+   } else {
+    alert("Please try again! Type Rock, Paper or Scissors!");
+    return getUserChoice();
+   }
+}
+
+console.log(getUserChoice());
