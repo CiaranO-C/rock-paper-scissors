@@ -1,3 +1,35 @@
+
+const wins = {
+    rock: "scissors",
+    paper: "rock",
+    scissors: "paper"
+};
+
+
+console.log(game());
+
+
+// while loops singleRound function to a best of 3 game
+function game(){
+
+    let computerScore = 0;
+    let playerScore = 0;
+    while(playerScore < 3 && computerScore < 3) {
+        let playerChoice = getPlayerChoice();
+        if (playerChoice) {
+        console.log(playRound(playerChoice, getComputerChoice()));
+        console.log(`Computer score = ${computerScore}`); 
+        console.log(`Player score = ${playerScore}`); 
+        } else {
+            return "See ya next time!";
+        }
+    }
+    if (playerScore === 3) {
+       return "Congrats you win!"; 
+    } else return "Oh no! The Computer wins ):";
+}
+
+
 // gets random computer choice
 function getComputerChoice() {
     switch(Math.floor((Math.random() * 3) + 1)) {
@@ -46,36 +78,3 @@ if (wins[playerChoice] === computerChoice) {
 } else 
     return "Tie! Go again!";
 }
-
-
-
-const wins = {
-    rock: "scissors",
-    paper: "rock",
-    scissors: "paper"
-};
-
-
-
-let computerScore = 0;
-let playerScore = 0;
-
-
-// while loops singleRound function to a best of 3 game
-function game(){
-    while(playerScore < 3 && computerScore < 3) {
-        let playerChoice = getPlayerChoice();
-        if (playerChoice) {
-        console.log(playRound(playerChoice, getComputerChoice()));
-        console.log(`Computer score = ${computerScore}`); 
-        console.log(`Player score = ${playerScore}`); 
-        } else {
-            return "See ya next time!";
-        }
-    }
-    if (playerScore === 3) {
-       return "Congrats you win!"; 
-    } else return "Oh no! The Computer wins ):";
-}
-
-console.log(game());
