@@ -13,6 +13,8 @@ function getComputerChoice() {
     }
 }
 
+
+
 // gets player choice, while loop until a correct entry is made
 function getPlayerChoice() {
     let choice;
@@ -35,21 +37,20 @@ function getPlayerChoice() {
 }
 
 
-
-
+// plays a single round of game, adds to scores
 function playRound(playerChoice, computerChoice) {
     console.log(playerChoice); //test
     console.log(computerChoice); //test
 if (wins[playerChoice] === computerChoice) {
     playerScore++;
-    return ("You win! " + playerChoice + " beats " + computerChoice + "!");
+    return (`You win! ${playerChoice} beats ${computerChoice}!`);
 } else if (wins[computerChoice] === playerChoice) {
     computerScore++;
-    return ("You Loose! " + computerChoice + " beats " + playerChoice + "!");
-} else if (playerChoice === computerChoice) {
+    return (`You loose! ${computerChoice} beats ${playerChoice}!`);
+} else 
     return "Tie! Go again!";
 }
-}
+
 
 
 const wins = {
@@ -58,17 +59,21 @@ const wins = {
     scissors: "paper"
 };
 
+
+
 let computerScore = 0
 let playerScore = 0
 
+
+// while loops singleRound function to a best of 3 game
 function game(){
     while(playerScore < 3 && computerScore < 3) {
     console.log(playRound(getPlayerChoice(), getComputerChoice()));
-    console.log("Computer score = " + computerScore); //test
-    console.log("Player score = " + playerScore); //test
+    console.log("Computer score = " + computerScore); 
+    console.log("Player score = " + playerScore); 
     }
     if (playerScore === 3) {
-       return "Congrats you win!"; //test
+       return "Congrats you win!"; 
     } else return "Oh no! The Computer wins ):";
 }
 
