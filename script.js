@@ -41,8 +41,10 @@ function playRound(playerChoice, computerChoice) {
     console.log(playerChoice); //test
     console.log(computerChoice); //test
 if (wins[playerChoice] === computerChoice) {
+    playerScore++;
     return ("You win! " + playerChoice + " beats " + computerChoice + "!");
 } else if (wins[computerChoice] === playerChoice) {
+    computerScore++;
     return ("You Loose! " + computerChoice + " beats " + playerChoice + "!");
 } else if (playerChoice === computerChoice) {
     return "Tie! Go again!";
@@ -56,5 +58,18 @@ const wins = {
     scissors: "paper"
 };
 
+let computerScore = 0
+let playerScore = 0
 
-console.log(playRound(getPlayerChoice(), getComputerChoice()));
+function game(){
+    while(playerScore < 3 && computerScore < 3) {
+    playRound(getPlayerChoice(), getComputerChoice());
+    console.log("comp score = " + computerScore); //test
+    console.log("player score = " + playerScore); //test
+    }
+    if (playerScore === 3) {
+       return "Congrats you win!"; //test
+    } else return "Oh no! computer wins";
+}
+
+console.log(game());
