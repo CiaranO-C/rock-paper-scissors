@@ -63,13 +63,13 @@ let playerScore = 0
 
 function game(){
     while(playerScore < 3 && computerScore < 3) {
-    playRound(getPlayerChoice(), getComputerChoice());
-    console.log("comp score = " + computerScore); //test
-    console.log("player score = " + playerScore); //test
+    console.log(playRound(getPlayerChoice(), getComputerChoice()));
+    console.log("Computer score = " + computerScore); //test
+    console.log("Player score = " + playerScore); //test
     }
     if (playerScore === 3) {
        return "Congrats you win!"; //test
-    } else return "Oh no! computer wins";
+    } else return "Oh no! The Computer wins ):";
 }
 
 console.log(game());
