@@ -19,15 +19,11 @@ function getComputerChoice() {
 function getPlayerChoice() {
     let choice;
     while(true) {
-        choice = prompt("Choose your weapon!", '');
+        choice = prompt("Choose your weapon!")?.toLowerCase();
 
-        if (choice === null) {
-            alert("See ya next time!");
+        if (!choice) {
             break; //exit loop if user selects cancel prompt
-        }
-
-        choice = choice.toLowerCase();
-        if (choice === "rock" || choice === "paper" || choice === "scissors") {
+        } else if (choice === "rock" || choice === "paper" || choice === "scissors") {
          break; //exit loop if choice is valid   
         } else {
          alert("Please try again! Type Rock, Paper or Scissors!");
@@ -61,16 +57,21 @@ const wins = {
 
 
 
-let computerScore = 0
-let playerScore = 0
+let computerScore = 0;
+let playerScore = 0;
 
 
 // while loops singleRound function to a best of 3 game
 function game(){
     while(playerScore < 3 && computerScore < 3) {
-    console.log(playRound(getPlayerChoice(), getComputerChoice()));
-    console.log("Computer score = " + computerScore); 
-    console.log("Player score = " + playerScore); 
+        let playerChoice = getPlayerChoice();
+        if (playerChoice) {
+        console.log(playRound(playerChoice, getComputerChoice()));
+        console.log(`Computer score = ${computerScore}`); 
+        console.log(`Player score = ${playerScore}`); 
+        } else {
+            return "See ya next time!";
+        }
     }
     if (playerScore === 3) {
        return "Congrats you win!"; 
