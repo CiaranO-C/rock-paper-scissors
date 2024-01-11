@@ -1,0 +1,123 @@
+body {
+    background-color: rgb(0, 120, 226);
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0 2rem;
+}
+
+
+.content {
+    display: flex;
+ align-items: center;
+justify-content: space-between;
+padding-top: 5rem;
+}
+
+.left-character-container {
+    display: flex;
+    flex-direction: column;
+    width: 215.406px;
+    align-items: center;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 3rem;
+}
+
+.right-character-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bagel-fat one-regular {
+    font-family: "Bagel Fat One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.header {   
+    font-family: "Bagel Fat One";
+    font-size: 60px;
+    color: rgb(172, 216, 255);
+    align-items: center;
+    margin: 0 auto;
+    padding-top: 2rem;
+}
+
+.button-container {
+    display: flex;
+    gap: 3rem;
+}
+
+button {
+  width: 8rem;
+  height: 8rem;
+  background-color: white;
+  border: none;
+  border-radius: 40px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+button:hover {
+    background-color: rgb(164, 206, 243);
+}
+
+button img {
+    max-width: 7rem;
+    max-height: 7rem;
+}
+
+.name,
+.score-text {
+    text-align: center;
+    border: 4px solid rgb(172, 216, 255);
+    border-radius: 10px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-family: "Space Grotesk", sans-serif;
+    color: white;
+    
+}
+
+#character-image {
+    max-height: 15rem;
+    max-width: 166.188px;
+}
+
+#computer-image {
+    max-height: 15rem;
+}
+
+#winner-text {
+    font-family: "Bagel Fat One", system-ui;
+    font-size: 50px;
+    color: white;
+}
+
+.winner {
+   align-self: center;
+   color: rgb(255, 0, 238);
+   font-family: "Bagel Fat One", system-ui;
+    font-size: 50px;
+}
+
+.Num {
+    font-family: "Bagel Fat One", system-ui;
+    font-size: 30px;
+    color: white;
+}
+
+.points-container {
+    display: flex;
+}
+
+.points-container img {
+    max-width: 25px;
+}

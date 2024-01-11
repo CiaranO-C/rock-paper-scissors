@@ -1,81 +1,92 @@
-// gets random computer choice
-function getComputerChoice() {
-    switch(Math.floor((Math.random() * 3) + 1)) {
-        case 1:
-            return "rock";
-            break;
-        case 2:
-            return "paper";
-            break;
-        case 3:
-            return "scissors";
-            break
-    }
-}
-
-
-
-// gets player choice, while loop until a correct entry is made
-function getPlayerChoice() {
-    let choice;
-    while(true) {
-        choice = prompt("Choose your weapon!")?.toLowerCase();
-
-        if (!choice) {
-            break; //exit loop if user selects cancel prompt
-        } else if (choice === "rock" || choice === "paper" || choice === "scissors") {
-         break; //exit loop if choice is valid   
-        } else {
-         alert("Please try again! Type Rock, Paper or Scissors!");
-        }  
-    }
-    return choice;
-}
-
-
-// plays a single round of game, adds to scores
-function playRound(playerChoice, computerChoice) {
-    console.log(playerChoice); //test
-    console.log(computerChoice); //test
-if (wins[playerChoice] === computerChoice) {
-    playerScore++;
-    return (`You win! ${playerChoice} beats ${computerChoice}!`);
-} else if (wins[computerChoice] === playerChoice) {
-    computerScore++;
-    return (`You loose! ${computerChoice} beats ${playerChoice}!`);
-} else 
-    return "Tie! Go again!";
-}
-
-
-
 const wins = {
     rock: "scissors",
     paper: "rock",
     scissors: "paper"
 };
 
+const hands = Object.values(wins);
 
+let scores = {
+tie : 0,
+playerScore : 0,
+computerScore : 0,
+};
 
-let computerScore = 0;
-let playerScore = 0;
+let rounds=0;
 
+let pScore = document.getElementById("player-score");
+let cScore = document.getElementById("computer-score");
+let tScore = document.getElementById('tie');
+let winner = document.querySelector(".winner");
+let buttons = document.querySelectorAll("button");
+let playerWins = document.querySelector('#player-wins');
+let compWins = document.querySelector('#comp-wins');
 
-// while loops singleRound function to a best of 3 game
-function game(){
-    while(playerScore < 3 && computerScore < 3) {
-        let playerChoice = getPlayerChoice();
-        if (playerChoice) {
-        console.log(playRound(playerChoice, getComputerChoice()));
-        console.log(`Computer score = ${computerScore}`); 
-        console.log(`Player score = ${playerScore}`); 
-        } else {
-            return "See ya next time!";
-        }
-    }
-    if (playerScore === 3) {
-       return "Congrats you win!"; 
-    } else return "Oh no! The Computer wins ):";
+//writes user name above character
+let pName = document.getElementById("player-name");
+pName.textContent = prompt("What's your name?");
+
+//play single round
+function playRound(playerChoice, computerChoice) {
+    console.log(playerChoice); //test
+    console.log(computerChoice); //test
+if (wins[playerChoice] === computerChoice) {
+    return tally('player');
+} else if (wins[computerChoice] === playerChoice) {
+    return tally('computer');
+} else 
+    return tally('tie');
 }
 
-console.log(game());
+
+function getComputerChoice() {
+return hands[Math.floor(Math.random()*hands.length)];
+}
+
+
+buttons.forEach(function(button) {
+    button.addEventListener('click', function(event){
+        playRound(event.target.alt, getComputerChoice());
+    });
+});
+
+
+function tally(roundResult) {
+    if (roundResult === 'player') {
+        ++scores.playerScore;
+        pScore.textContent = scores.playerScore;
+    } else if (roundResult === 'computer') {
+        ++scores.computerScore;
+        cScore.textContent = scores.computerScore;
+    } else {++scores.tie;
+    tScore.textContent = scores.tie;
+    }
+    if (scores.playerScore > 2 || scores.computerScore > 2) {
+        checkScores(scores.playerScore, scores.computerScore);
+    }
+}
+
+
+
+function checkScores(player, computer){
+    let point = document.createElement('img');
+    point.src = './score-dot.png';
+if (player > 2) {
+    winner.textContent = pName.textContent;
+    playerWins.appendChild(point);
+} else if (computer > 2) {
+    winner.textContent = "Computer!";
+    compWins.appendChild(point);
+}
+//resets object values to 0
+Object.keys(scores).forEach(function(key) {
+scores[key] = 0;
+});
+
+pScore.textContent = 0;
+cScore.textContent = 0;
+tScore.textContent = 0;
+}
+
+
+
